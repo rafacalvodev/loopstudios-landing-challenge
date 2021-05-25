@@ -80,8 +80,8 @@ select {
   --dark-gray: hsl(0, 0%, 55%);
   --very-dark-gray: hsl(0, 0%, 41%);
 
-  --heading-font: font-family: 'Alata', sans-serif;;
-  --body-font: 'Josefin Sans', sans-serif;;
+  --heading-font: 'Alata', sans-serif;
+  --body-font: 'Josefin Sans', sans-serif;
 
   color: var(--black);
   font-family: var(--body-font);
@@ -112,7 +112,7 @@ p {
   color: var(--very-dark-gray);
 }
 
-a{
+a {
   text-decoration: none;
   color: inherit;
 }
@@ -137,6 +137,15 @@ button {
 svg {
   width: 100%;
   margin: 0;
+}
+
+.btn {
+  display: inline-block;
+  border: 1px solid var(--black);
+  padding: 16px 40px;
+  text-transform: uppercase;
+  font-size: 1rem;
+  margin: 20px auto;
 }
 
 .visuallyhidden {
@@ -198,7 +207,6 @@ header {
   border: 1px solid var(--white);
   margin: auto 30px;
   padding: 35px;
-
 }
 
 .intro-section {
@@ -215,11 +223,29 @@ header {
 
 .creations-section {
   padding: 122px 30px 102px 30px;
+  display: grid;
+  grid-template-columns: 1fr;
+  align-content: center;
+  grid-template-areas:
+    'creations-title'
+    'main-grid'
+    'see-all';
+}
+
+.creations-section h2 {
+  grid-area: creations-title;
+}
+
+.see-all {
+  grid-area: see-all;
+  align-self: center;
+  text-align: center;
 }
 
 .grid {
+  grid-area: main-grid;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-columns: 1fr;
   gap: 30px;
   justify-content: center;
 }
@@ -228,8 +254,6 @@ header {
   background-color: lightblue;
   height: 150px;
 }
-
-
 
 .grid li h3 {
   position: relative;
@@ -243,7 +267,11 @@ header {
 .card-overlay {
   height: 100%;
   width: 100%;
-  background-image: linear-gradient(to right,rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+  background-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.5),
+    rgba(0, 0, 0, 0)
+  );
 }
 
 .earth {
@@ -304,6 +332,9 @@ header {
 
 footer {
   background-color: var(--black);
+}
+
+.footer {
   color: var(--white);
   padding: 38px 30px 30px 30px;
   display: grid;
@@ -311,11 +342,11 @@ footer {
   align-content: center;
   align-items: center;
   grid-template-areas:
-    "logo"
-    "main-links"
-    "social-links"
-    "copyright"
-    "attribution";
+    'logo'
+    'main-links'
+    'social-links'
+    'copyright'
+    'attribution';
 }
 
 footer .logo {
@@ -358,17 +389,183 @@ footer .social-links {
   margin-top: 36px;
 }
 
-
 @media only screen and (min-width: 600px) {
+  h1 {
+    font-size: 52px;
+  }
+
   br {
     display: none;
   }
+
+  header {
+    background-image: url(/images/desktop/image-hero.jpg);
+  }
+
   .desktop-nav {
+    padding-top: 42px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+  }
+
+  .desktop-nav-items {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .desktop-nav-items li {
+    margin-left: 32px;
+    font-size: 1rem;
   }
 
   .mobile-nav {
     display: none;
+  }
+
+  .hero-section {
+    justify-content: start;
+  }
+
+  .hero-title {
+    margin: 0;
+    width: 650px;
+    /* height: 280px; */
+  }
+
+  .hero-title br {
+    display: block;
+  }
+
+  .intro-img,
+  .intro-text {
+    flex: 1 1 0px;
+  }
+}
+
+@media only screen and (min-width: 1023px) {
+  br {
+    display: block;
+  }
+
+  .intro-section {
+    flex-direction: row;
+  }
+
+  .intro-text {
+    background-color: var(--white);
+    text-align: left;
+    padding: 78px 0 0 98px;
+    position: absolute;
+    top: 144%;
+    right: 10%;
+    width: 564px;
+  }
+
+  .intro-text h2 {
+    text-align: left;
+  }
+
+  .creations-section {
+    padding: 122px 30px 102px 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-content: space-between;
+    grid-template-areas:
+      'creations-title . see-all'
+      'main-grid main-grid main-grid';
+  }
+
+  .creations-section h2 {
+    text-align: left;
+  }
+
+  .see-all {
+    align-self: flex-end;
+    justify-self: end;
+    margin: 20px 0;
+  }
+
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .grid li {
+    height: 450px;
+  }
+
+  .grid li h3 {
+    top: -25%;
+  }
+
+  .card-overlay {
+    background-image: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.75),
+      rgba(0, 0, 0, 0)
+    );
+  }
+
+  .earth {
+    background-image: url(./images/desktop/image-deep-earth.jpg);
+  }
+
+  .arcade {
+    background-image: url(./images/desktop/image-night-arcade.jpg);
+  }
+
+  .soccer {
+    background-image: url(./images/desktop/image-soccer-team.jpg);
+  }
+
+  .the-grid {
+    background-image: url(./images/desktop/image-grid.jpg);
+  }
+
+  .above {
+    background-image: url(./images/desktop/image-from-above.jpg);
+  }
+
+  .borealis {
+    background-image: url(./images/desktop/image-pocket-borealis.jpg);
+  }
+
+  .curiosity {
+    background-image: url(./images/desktop/image-curiosity.jpg);
+  }
+
+  .fisheye {
+    background-image: url(./images/desktop/image-fisheye.jpg);
+  }
+
+  .footer {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas:
+      'logo . social-links'
+      'main-links . copyright'
+      '. attribution .';
+  }
+
+  .footer .logo,
+  .footer-links {
+    justify-self: start;
+  }
+
+  .footer .social-links,
+  .copyright {
+    justify-self: end;
+  }
+
+  .footer-links {
+    grid-area: main-links;
+
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    gap: 1rem;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: left;
   }
 }
