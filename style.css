@@ -151,7 +151,7 @@ svg {
 
 .btn:hover {
   background-color: var(--black);
-  color: var(--white);
+  color: white;
 }
 
 .visuallyhidden {
@@ -169,7 +169,7 @@ header {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
-  height: 100vh;
+  min-height: 100vh;
 
   color: var(--white);
 }
@@ -223,6 +223,10 @@ header {
 
 .desktop-nav {
   display: none;
+}
+
+.desktop-nav a:hover {
+  border-bottom: 1px solid white;
 }
 
 .hero-section {
@@ -481,6 +485,10 @@ footer .social-links {
     display: block;
   }
 
+  header {
+    height: 100vh;
+  }
+
   .desktop-nav {
     padding: 42px 0 0 0;
     margin-bottom: 8px;
@@ -493,8 +501,14 @@ footer .social-links {
     padding: 0;
   }
 
+  .intro-section,
+  .creations-section {
+    padding-top: 80px;
+  }
+
   .intro-section {
     flex-direction: row;
+    position: relative;
   }
 
   .intro-text {
@@ -502,7 +516,7 @@ footer .social-links {
     text-align: left;
     padding: 78px 0 0 98px;
     position: absolute;
-    top: 144%;
+    top: 42%;
     right: 10%;
     width: 564px;
   }
@@ -512,13 +526,19 @@ footer .social-links {
   }
 
   .creations-section {
-    padding: 122px 30px 102px 30px;
+    padding-right: 30px;
+    padding-bottom: 80px;
+    padding-left: 30px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     align-content: space-between;
     grid-template-areas:
       'creations-title . see-all'
       'main-grid main-grid main-grid';
+  }
+
+  .creations-section a:hover {
+    color: var(--black);
   }
 
   .creations-section h2 {
@@ -541,6 +561,12 @@ footer .social-links {
 
   .grid li h3 {
     top: -25%;
+    z-index: 5;
+    width: 100;
+  }
+
+  .grid li h3:hover {
+    color: black;
   }
 
   .card-overlay {
@@ -549,6 +575,16 @@ footer .social-links {
       rgba(0, 0, 0, 0.75),
       rgba(0, 0, 0, 0)
     );
+  }
+
+  .card-overlay:hover {
+    background-color: rgba(255, 255, 255, 0);
+    background-image: linear-gradient(
+      to top,
+      rgba(255, 255, 255, 0.5),
+      rgba(255, 255, 255, 0.5)
+    );
+    color: black;
   }
 
   .earth {
@@ -581,6 +617,17 @@ footer .social-links {
 
   .fisheye {
     background-image: url(./images/desktop/image-fisheye.jpg);
+  }
+
+  .earth a,
+  .arcade a,
+  .soccer a,
+  .the-grid a,
+  .above a,
+  .borealis a,
+  .curiosity a,
+  .fisheye a {
+    height: 100%;
   }
 
   .footer {
